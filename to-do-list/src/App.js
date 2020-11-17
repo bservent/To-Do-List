@@ -1,4 +1,6 @@
-import { Switch } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
+import Home from './components/Home';
+import TodosContainer from './containers/ToDoContainer';
 import './App.css';
 
 function App() {
