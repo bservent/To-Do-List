@@ -43,6 +43,19 @@ class ToDoContainers extends Component {
     });
   };
 
+  updateTodo = todo => {
+    const isUpdatedTodo = t => {
+      return t._id === todo._id;
+    };
+
+    TodoModel.update(todo)
+      .then((res) => {
+        let todos = this.state.todos;
+        todos.find(isUpdatedTodo).body = todo.body;
+        this.setState({ todos: todos });
+    });
+  };
+
   render() {
     return (
       <div className="todosComponent">
@@ -50,6 +63,7 @@ class ToDoContainers extends Component {
           createTodo={this.createTodo} />
         <Todos
           todos={this.state.todos} 
+          updateTodo={this.updateTodo}
           deleteTodo={this.deleteTodo}
           />
       </div>
